@@ -18,7 +18,7 @@ public class SpaceShip {
     private int screenWidth = Gdx.graphics.getWidth();
 
     public SpaceShip() {
-        texture = new Texture("spaceship.png");
+        texture = new Texture("spaceship4.png");
         position = new Vector2(100, 330);
         speed = 8.0f;
     }
