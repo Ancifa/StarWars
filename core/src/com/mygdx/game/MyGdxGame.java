@@ -7,15 +7,21 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MyGdxGame extends ApplicationAdapter {
-	SpriteBatch batch;
-	Background background;
-	SpaceShip spaceShip;
+	private SpriteBatch batch;
+	private Background background;
+	private SpaceShip spaceShip;
+	private final int ASTEROISD_COUNT = 30;
+	private Asteroid[] asteroids;
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		background = new Background();
 		spaceShip = new SpaceShip();
+		asteroids = new Asteroid[ASTEROISD_COUNT];
+		for(Asteroid asteroid: asteroids) {
+			asteroid = new Asteroid();
+		}
 	}
 
 	@Override
@@ -26,12 +32,18 @@ public class MyGdxGame extends ApplicationAdapter {
 		batch.begin();
 		background.render(batch);
 		spaceShip.render(batch);
+		for(Asteroid asteroid : asteroids) {
+			asteroid.render(batch);
+		}
 		batch.end();
 	}
 
 	public void update() {
 		background.update();
 		spaceShip.update();
+		for(Asteroid asteroid : asteroids) {
+			asteroid.update();
+		}
 	}
 
 	@Override

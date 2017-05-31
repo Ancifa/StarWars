@@ -13,14 +13,16 @@ public class SpaceShip {
     private Texture texture;
     private Vector2 position;
     private float speed;
+    private int health;
 
     private int screenHeight = Gdx.graphics.getHeight();
     private int screenWidth = Gdx.graphics.getWidth();
 
     public SpaceShip() {
-        texture = new Texture("spaceship4.png");
+        texture = new Texture("spaceship4_100x71.png");
         position = new Vector2(100, 330);
         speed = 8.0f;
+        health = 10;
     }
 
     public void render(SpriteBatch batch) {
