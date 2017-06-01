@@ -17,8 +17,8 @@ public class Asteroid {
     private int health;
     private Rectangle rectangle;
 
-    private int screenHeight = Gdx.graphics.getHeight();
-    private int screenWidth = Gdx.graphics.getWidth();
+    private int screenWidth = Background.SCREEN_WIDTH;
+    private int screenHeight = Background.SCREEN_HEIGHT;
 
     public Asteroid() {
         if(texture == null) {
@@ -26,7 +26,7 @@ public class Asteroid {
         }
         position = new Vector2((float) Math.random() * screenWidth + screenWidth,
                 (float) Math.random() * screenHeight);
-        speed = 5.0f +(float) Math.random() * 10.0f;
+        speed = 5.0f +(float) Math.random() * 5.0f;
         rectangle = new Rectangle(position.x, position.y, 256, 256);
     }
 
@@ -46,7 +46,7 @@ public class Asteroid {
     private void recreate() {
         position.x = screenWidth + 256;
         position.y = (float) Math.random() * screenHeight;
-        speed = 2.0f +(float) Math.random() * 6.0f;
+        speed = 5.0f +(float) Math.random() * 5.0f;
     }
 
     public Rectangle getRectangle() {

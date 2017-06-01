@@ -15,8 +15,8 @@ public class SpaceShip {
     private float speed;
     private int health;
 
-    private int screenHeight = Gdx.graphics.getHeight();
-    private int screenWidth = Gdx.graphics.getWidth();
+    private int screenWidth = Background.SCREEN_WIDTH;
+    private int screenHeight = Background.SCREEN_HEIGHT;
 
     public SpaceShip() {
         texture = new Texture("spaceship4_100x71.png");
@@ -41,6 +41,18 @@ public class SpaceShip {
         }
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && position.y >= 0) {
             position.y -= speed;
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+            fire();
+        }
+    }
+
+    public void fire() {
+        for(Weapon weapon : MyGdxGame.weapons) {
+            if(!weapon.isActive()) {
+                weapon.setup(position.x, position.y);
+                break;
+            }
         }
     }
 }
