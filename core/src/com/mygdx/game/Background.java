@@ -18,7 +18,7 @@ public class Background {
         private float speed;
 
         public Star() {
-            position = new Vector2((float) Math.random() * SCREEN_HEIGHT, (float) Math.random() * SCREEN_HEIGHT);
+            position = new Vector2((float) Math.random() * SCREEN_WIDTH, (float) Math.random() * SCREEN_HEIGHT);
             speed = 2.0f + (float) Math.random() * 6.0f;
         }
 
@@ -41,21 +41,21 @@ public class Background {
         textureBg = new Texture("bg.png");
         textureStar = new Texture("star.png");
         stars = new Star[STARS_COUNT];
-        for (Star star : stars) {
-            star = new Star();
+        for (int i = 0; i < stars.length; i++) {
+            stars[i] = new Star();
         }
     }
 
     public void render(SpriteBatch batch) {
         batch.draw(textureBg, 0, 0);
-        for (Star star : stars) {
-            batch.draw(textureStar, star.position.x, star.position.y);
+        for (int i = 0; i < stars.length; i++) {
+            batch.draw(textureStar, stars[i].position.x, stars[i].position.y);
         }
     }
 
     public void update() {
-        for (Star star : stars) {
-            star.update();
+        for (int i = 0; i < stars.length; i++) {
+            stars[i].update();
         }
     }
 }

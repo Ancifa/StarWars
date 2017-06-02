@@ -36,11 +36,11 @@ public class SpaceShip {
         if(Gdx.input.isKeyPressed(Input.Keys.DOWN) && position.y >= 0) {
             position.y -= speed;
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && position.y <= screenWidth - texture.getWidth()) {
-            position.y += speed;
+        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && position.x <= screenWidth - texture.getWidth()) {
+            position.x += speed;
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && position.y >= 0) {
-            position.y -= speed;
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && position.x >= 0) {
+            position.x -= speed;
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             fire();
@@ -48,9 +48,9 @@ public class SpaceShip {
     }
 
     public void fire() {
-        for(Weapon weapon : MyGdxGame.weapons) {
-            if(!weapon.isActive()) {
-                weapon.setup(position.x, position.y);
+        for(int i = 0; i < MyGdxGame.weapons.length; i++) {
+            if(!MyGdxGame.weapons[i].isActive()) {
+                MyGdxGame.weapons[i].setup(position.x + 30, position.y + 20);
                 break;
             }
         }

@@ -11,7 +11,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	private SpaceShip spaceShip;
 	private final int ASTEROIDS_COUNT = 30;
 	private Asteroid[] asteroids;
-	private final int WEAPONS_COUNT = 200;
+	public final static int WEAPONS_COUNT = 200;
 	public static Weapon[] weapons;
 
 	@Override
@@ -20,12 +20,12 @@ public class MyGdxGame extends ApplicationAdapter {
 		background = new Background();
 		spaceShip = new SpaceShip();
 		asteroids = new Asteroid[ASTEROIDS_COUNT];
-		for(Asteroid asteroid: asteroids) {
-			asteroid = new Asteroid();
+		for(int i = 0; i < asteroids.length; i++) {
+			asteroids[i] = new Asteroid();
 		}
 		weapons = new Weapon[WEAPONS_COUNT];
-		for(Weapon weapon : weapons) {
-			weapon = new Weapon();
+		for(int i = 0; i < weapons.length; i++) {
+			weapons[i] = new Weapon();
 		}
 	}
 
@@ -37,12 +37,13 @@ public class MyGdxGame extends ApplicationAdapter {
 		batch.begin();
 		background.render(batch);
 		spaceShip.render(batch);
-		for(Asteroid asteroid : asteroids) {
-			asteroid.render(batch);
+		for(int i = 0; i < asteroids.length; i++) {
+			asteroids[i].render(batch);
 		}
-		for(Weapon weapon : weapons) {
-			if(weapon.isActive()) {
-				batch.draw(weapon.getTexture(), weapon.getPosition().x, weapon.getPosition().y);
+		for(int i = 0; i < weapons.length; i++) {
+			if(weapons[i].isActive()) {
+				batch.draw(weapons[i].getTexture(),
+						weapons[i].getPosition().x, weapons[i].getPosition().y);
 			}
 		}
 		batch.end();
@@ -51,12 +52,12 @@ public class MyGdxGame extends ApplicationAdapter {
 	public void update() {
 		background.update();
 		spaceShip.update();
-		for(Asteroid asteroid : asteroids) {
-			asteroid.update();
+		for(int i = 0; i < asteroids.length; i++) {
+			asteroids[i].update();
 		}
-		for(Weapon weapon : weapons) {
-			if (weapon.isActive()) {
-				weapon.update();
+		for(int i = 0; i < weapons.length; i++) {
+			if (weapons[i].isActive()) {
+				weapons[i].update();
 			}
 		}
 	}
