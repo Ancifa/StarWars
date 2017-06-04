@@ -45,7 +45,7 @@ public class Asteroid {
 
     private void recreate() {
         position.x = screenWidth + 256;
-        position.y = (float) Math.random() * screenHeight;
+        position.y = (float) Math.random() * (screenHeight + 256) - 256;
         speed = 5.0f +(float) Math.random() * 5.0f;
     }
 

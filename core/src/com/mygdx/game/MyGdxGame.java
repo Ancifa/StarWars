@@ -9,7 +9,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private Background background;
 	private SpaceShip spaceShip;
-	private final int ASTEROIDS_COUNT = 30;
+	private final int ASTEROIDS_COUNT = 10;
 	private Asteroid[] asteroids;
 	public final static int WEAPONS_COUNT = 200;
 	public static Weapon[] weapons;

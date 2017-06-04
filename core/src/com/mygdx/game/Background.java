@@ -19,7 +19,7 @@ public class Background {
 
         public Star() {
             position = new Vector2((float) Math.random() * SCREEN_WIDTH, (float) Math.random() * SCREEN_HEIGHT);
-            speed = 2.0f + (float) Math.random() * 6.0f;
+            speed = 2.0f + (float) Math.random() * 2.0f;
         }
 
         public void update() {
