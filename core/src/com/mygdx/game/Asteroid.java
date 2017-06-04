@@ -14,6 +14,7 @@ public class Asteroid {
     private Vector2 position;
     private int size;
     private float speed;
+    private float angle;
     private int health;
     private Rectangle rectangle;
 
@@ -27,15 +28,18 @@ public class Asteroid {
         position = new Vector2((float) Math.random() * screenWidth + screenWidth,
                 (float) Math.random() * screenHeight);
         speed = 5.0f +(float) Math.random() * 5.0f;
+        angle = (float) Math.random() * 360;
         rectangle = new Rectangle(position.x, position.y, 256, 256);
     }
 
     public void render(SpriteBatch batch) {
+        batch.draw(texture, position.x, position.y, 128, 128, 256, 256, 1.0f, 1.0f, angle, 0, 0, 256, 256, false, false);
         batch.draw(texture, position.x, position.y);
     }
 
     public void update() {
         position.x -= speed;
+        angle += speed / 2;
         if(position.x < -256) {
             recreate();
         }
@@ -43,10 +47,11 @@ public class Asteroid {
         rectangle.y = position.y;
     }
 
-    private void recreate() {
+    public void recreate() {
         position.x = screenWidth + 256;
         position.y = (float) Math.random() * screenHeight;
         speed = 5.0f +(float) Math.random() * 5.0f;
+        angle = (float) Math.random() * 360;
     }
 
     public Rectangle getRectangle() {

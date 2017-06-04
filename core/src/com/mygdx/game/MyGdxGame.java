@@ -11,7 +11,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	private SpaceShip spaceShip;
 	private final int ASTEROIDS_COUNT = 30;
 	private Asteroid[] asteroids;
-	public final static int WEAPONS_COUNT = 200;
+	public final int WEAPONS_COUNT = 200;
 	public static Weapon[] weapons;
 
 	@Override
@@ -43,7 +43,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		for(int i = 0; i < weapons.length; i++) {
 			if(weapons[i].isActive()) {
 				batch.draw(weapons[i].getTexture(),
-						weapons[i].getPosition().x, weapons[i].getPosition().y);
+						weapons[i].getPosition().x + 46, weapons[i].getPosition().y + 23);
 			}
 		}
 		batch.end();
@@ -58,6 +58,13 @@ public class MyGdxGame extends ApplicationAdapter {
 		for(int i = 0; i < weapons.length; i++) {
 			if (weapons[i].isActive()) {
 				weapons[i].update();
+				for (int j = 0; j < asteroids.length; j++) {
+					if(asteroids[j].getRectangle().contains(weapons[i].getPosition())) {
+						weapons[i].destroy();
+						asteroids[j].recreate();
+						break;
+					}
+				}
 			}
 		}
 	}
