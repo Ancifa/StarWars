@@ -39,7 +39,7 @@ public class Asteroid {
 
     public void update() {
         position.x -= speed;
-        angle += speed / 2;
+        angle += speed / 4;
         if(position.x < -256) {
             recreate();
         }
