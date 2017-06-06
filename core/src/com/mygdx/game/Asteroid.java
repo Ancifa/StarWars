@@ -49,11 +49,13 @@ public class Asteroid {
         rectangle.y = position.y;
     }
 
-    public void makeDamage(int damage) {
+    public boolean makeDamage(int damage) {
         health -= damage;
         if (health <= 0) {
             recreate();
+            return true;
         }
+        return false;
     }
 
     public void recreate() {
