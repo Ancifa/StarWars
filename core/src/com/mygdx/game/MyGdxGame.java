@@ -61,7 +61,7 @@ public class MyGdxGame extends ApplicationAdapter {
 				for (int j = 0; j < asteroids.length; j++) {
 					if(asteroids[j].getRectangle().contains(weapons[i].getPosition())) {
 						weapons[i].destroy();
-						asteroids[j].recreate();
+						asteroids[j].makeDamage(1);
 						break;
 					}
 				}
