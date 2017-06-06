@@ -14,6 +14,8 @@ public class SpaceShip {
     private Vector2 position;
     private float speed;
     private int health;
+    private int fireRate;
+    private int fireCounter;
 
     private int screenWidth = Background.SCREEN_WIDTH;
     private int screenHeight = Background.SCREEN_HEIGHT;
@@ -23,6 +25,8 @@ public class SpaceShip {
         position = new Vector2(100, 330);
         speed = 4.0f;
         health = 10;
+        fireRate = 6;
+        fireCounter = 0;
     }
 
     public void render(SpriteBatch batch) {
@@ -42,12 +46,16 @@ public class SpaceShip {
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && position.x >= 0) {
             position.x -= speed;
         }
-        if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            fire();
+        if(Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+            fireCounter++;
+            if(fireCounter > fireRate) {
+                fireCounter = 0;
+                fire();
+            }
         }
     }
 
-    public void fire() {
+    private void fire() {
         for(int i = 0; i < MyGdxGame.weapons.length; i++) {
             if(!MyGdxGame.weapons[i].isActive()) {
                 MyGdxGame.weapons[i].setup(position.x + 30, position.y + 20);
