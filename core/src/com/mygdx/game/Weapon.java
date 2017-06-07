@@ -1,9 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import sun.plugin2.main.server.ServerPrintHelper;
 
 /**
  * Created by 1 on 31.05.2017.
